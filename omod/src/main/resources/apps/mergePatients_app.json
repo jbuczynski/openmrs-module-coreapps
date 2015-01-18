@@ -1,0 +1,29 @@
+[
+    {
+        "id": "coreapps.mergePatients",
+        "instanceOf": "coreapps.template.findPatient",
+        "description": "Basic patient search that goes to the patient dashboard",
+        "order": 2,
+        "extensions": [
+            {
+                "id": "coreapps.activeVisitsHomepageLink",
+                "extensionPointId": "org.openmrs.referenceapplication.homepageLink",
+                "type": "link",
+                "label": "coreapps.mergePatientsLong",
+                "url": "coreapps/mergePatients.page",
+                "icon": "icon-search",
+                "requiredPrivilege": "App: coreapps.findPatient"
+            },
+           {
+               "id": "${project.parent.groupId}.${project.parent.artifactId}.mergePatients",
+               "extensionPointId": "patientDashboard.overallActions",
+               "type": "link",
+               "label": "coreapps.mergePatientsShort",
+               "url": "coreapps/mergePatients.page?patient1={{ patient.uuid }}",
+               "icon": "icon-link",
+               "order": 14,
+               "requiredPrivilege": "Task: coreapps.mergeVisits"
+           }
+        ]
+    }
+]
